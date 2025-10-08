@@ -33,8 +33,8 @@ stage('Snyk Security Scan') {
         // Authenticate and scan using Snyk
         bat """
             snyk auth %SNYK_TOKEN%
-            snyk test --all-projects
-            snyk monitor --all-projects
+            snyk test 
+            snyk monitor 
         """
     }
 }
