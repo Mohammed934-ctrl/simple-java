@@ -29,15 +29,16 @@ pipeline {
         }
 
 stage('Snyk Security Scan') {
-            steps {
-                // Authenticate and scan using Snyk
-                bat """
-                    snyk auth %SNYK_TOKEN%
-                    snyk test --all-projects --fail-on=high
-                    snyk monitor --all-projects
-                """
-            }
-        }
+    steps {
+        // Authenticate and scan using Snyk
+        bat """
+            snyk auth %SNYK_TOKEN%
+            snyk test --all-projects
+            snyk monitor --all-projects
+        """
+    }
+}
+
 
 
 
