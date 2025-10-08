@@ -12,7 +12,7 @@ pipeline {
         TOMCAT_URL = 'http://localhost:7080' // Tomcat server URL
         TOMCAT_USER = 'admin' // Tomcat Manager username
         TOMCAT_PASSWORD = 'admin48' // Tomcat Manager password
-		SNYK_TOKEN = credentials('snyk-token-id')
+		SNYK_TOKEN = credentials('SNYK_TOKEN')
     }
     
     stages {
