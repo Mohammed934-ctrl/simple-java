@@ -28,16 +28,21 @@ pipeline {
             }
         }
 
-stage('Snyk Security Scan') {
+stage('Snyk Scan') {
     steps {
-        // Authenticate and scan using Snyk
-        bat """
-            snyk auth %SNYK_TOKEN%
-            snyk test 
-            snyk monitor 
-        """
+        dir("${WORKSPACE}") {
+            bat '''
+                echo Authenticating Snyk...
+                cmd /c snyk auth %SNYK_TOKEN%
+                echo Running Snyk test...
+                cmd /c snyk test --all-projects --severity-threshold=medium --debug
+                echo Running Snyk monitor...
+                cmd /c snyk monitor --debug
+            '''
+        }
     }
 }
+
 
 
 
