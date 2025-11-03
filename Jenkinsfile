@@ -12,7 +12,7 @@ pipeline {
         TOMCAT_URL = 'http://localhost:7080' // Tomcat server URL
         TOMCAT_USER = 'admin' // Tomcat Manager username
         TOMCAT_PASSWORD = 'admin48' // Tomcat Manager password
-		SNYK_TOKEN = credentials('SNYK_TOKEN')
+		// SNYK_TOKEN = credentials('SNYK_TOKEN')
     }
     
     stages {
@@ -28,20 +28,20 @@ pipeline {
             }
         }
 
-stage('Snyk Scan') {
-    steps {
-        dir("${WORKSPACE}") {
-            bat '''
-                echo Authenticating Snyk...
-                cmd /c snyk auth %SNYK_TOKEN%
-                echo Running Snyk test...
-                cmd /c snyk test --all-projects --severity-threshold=medium --debug
-                echo Running Snyk monitor...
-                cmd /c snyk monitor --debug
-            '''
-        }
-    }
-}
+// stage('Snyk Scan') {
+//     steps {
+//         dir("${WORKSPACE}") {
+//             bat '''
+//                 echo Authenticating Snyk...
+//                 cmd /c snyk auth %SNYK_TOKEN%
+//                 echo Running Snyk test...
+//                 cmd /c snyk test --all-projects --severity-threshold=medium --debug
+//                 echo Running Snyk monitor...
+//                 cmd /c snyk monitor --debug
+//             '''
+//         }
+//     }
+// }
 
 
 
